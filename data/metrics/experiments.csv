@@ -1,0 +1,3 @@
+timestamp,alpha,model,ndcg@10,recall@10,mrr@10,commit
+2026-03-12T13:15:51.550421,0.5,tfidf-faiss,0.136,0.1333,0.245,ae3508a
+2026-03-12T18:50:09.644931,0.5,tfidf-faiss,0.136,0.1333,0.245,ae3508a
