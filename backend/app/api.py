@@ -7,8 +7,10 @@ from rank_bm25 import BM25Okapi
 import time
 import uuid
 from datetime import datetime
+from backend.app.db import init_db, log_query
 
 app = FastAPI()
+init_db()
 
 # Load BM25 index
 with open("data/index/bm25.pkl", "rb") as f:
@@ -78,6 +80,16 @@ def search(query: str, top_k: int = 5, alpha: float = 0.5):
     }
 
     print(json.dumps(log_entry))
+
+    log_query(
+        request_id,
+        query,
+        top_k,
+        alpha,
+        latency_ms,
+        len(results),
+        log_entry["timestamp"]
+    )
 
     return {
         "request_id": request_id,
