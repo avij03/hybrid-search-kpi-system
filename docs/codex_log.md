@@ -101,3 +101,99 @@ Create evaluation module backend/app/evaluate.py implementing Recall@k and nDCG@
 
 Result:
 Implemented evaluation script and created evaluation dataset data/eval/qrels.json.
+
+------------------------------------------------------------------------------------------------------------------------
+
+## Prompt 8
+Task: Expand corpus size to support meaningful evaluation.
+
+Prompt used:
+Generate a synthetic corpus of at least 300 short technical documents covering topics such as machine learning, cybersecurity, vector search, and distributed systems. The output should be saved in data/raw so the ingestion pipeline can process it.
+
+Result:
+Generated backend/app/generate_docs.py which produces a synthetic corpus of 300 documents.
+
+Action taken:
+Re-ran ingestion and indexing pipelines to rebuild the dataset and indexes for evaluation experiments.
+
+-----------------------------------------------------------------------------------------------------------------------
+
+## Prompt 9
+Task: Create evaluation dataset for retrieval benchmarking.
+
+Prompt used:
+Generate a set of evaluation queries and relevance judgements suitable for testing a hybrid search system.
+
+Result:
+Created queries.jsonl with 25 queries and qrels.json mapping queries to relevant documents.
+
+-----------------------------------------------------------------------------------------------------------------------
+
+## Prompt 10
+Task: Implement evaluation pipeline and experiment tracking.
+
+Prompt used:
+Extend the evaluation script to load queries, call the hybrid search API, compute Recall@10, nDCG@10, and MRR@10, and log results to a CSV file under data/metrics.
+
+Result:
+Implemented evaluation loop in evaluate.py and experiment logging to data/metrics/experiments.csv.
+
+-----------------------------------------------------------------------------------------------------------------------
+
+## Prompt 11
+Task: Add observability and structured logging to the API.
+
+Prompt used:
+Modify the FastAPI search endpoint to generate structured logs including request_id, query parameters, latency, and result counts.
+
+Result:
+Implemented structured JSON logging in api.py for every search request.
+
+------------------------------------------------------------------------------------------------------------------------
+
+## Prompt 12
+Task: Add persistent query logging using SQLite.
+
+Prompt used:
+Implement a SQLite database to store search queries and metrics such as request_id, query text, alpha parameter, latency, result count, and timestamp.
+
+Result:
+Created backend/app/db.py for database management and integrated query logging into the FastAPI search endpoint. Each search request is now stored in data/metrics/search_logs.db.
+
+------------------------------------------------------------------------------------------------------------------------
+
+## Prompt 13
+Task: Add system KPIs to the Streamlit dashboard.
+
+Prompt used:
+Extend the dashboard to show total queries, average latency, and most frequent queries using the SQLite query log database.
+
+Result:
+Dashboard now displays KPI metrics from search_logs.db.
+
+------------------------------------------------------------------------------------------------------------------------
+
+## Prompt 14
+Task: Design break/fix scenarios for system reliability testing.
+
+Prompt used:
+Generate realistic failure scenarios for the hybrid search system and describe how they can be fixed.
+
+Result:
+Created break_fix.md documenting index failures, missing corpus issues, and database recovery steps.
+
+------------------------------------------------------------------------------------------------------------------------
+
+## Prompt 15
+Task: Add automated tests for the hybrid search system.
+
+Prompt used:
+Generate simple pytest tests to validate the FastAPI health endpoint and the hybrid search endpoint. The tests should verify that the API responds correctly and that search results contain the expected scoring fields.
+
+Result:
+Created two test files:
+- tests/test_api.py for validating the health and search endpoints
+- tests/test_search.py for validating scoring outputs
+
+These tests can be executed using:
+python -m pytest
