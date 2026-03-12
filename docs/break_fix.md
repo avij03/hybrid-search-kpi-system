@@ -1,42 +1,42 @@
 # Break / Fix Scenarios
 
-## Scenario 1 – Missing BM25 index
+## Scenario 1 – Missing BM25 Index
 
 Break:
 Delete data/index/bm25.pkl
 
-Expected issue:
-Search API fails because BM25 index cannot be loaded.
+Effect:
+FastAPI server fails to start because the BM25 index cannot be loaded.
 
 Fix:
-Rebuild the index by running:
+Rebuild the index:
 
 python -m backend.app.index --input data/processed/docs.jsonl --out data/index
 
 
-## Scenario 2 – Missing processed documents
+## Scenario 2 – Missing Processed Documents
 
 Break:
 Delete data/processed/docs.jsonl
 
-Expected issue:
-Index building fails because the processed corpus is missing.
+Effect:
+Indexing fails because the processed corpus does not exist.
 
 Fix:
-Run ingestion again:
+Run ingestion pipeline:
 
 python -m backend.app.ingest --input data/raw --out data/processed
 
+Then rebuild indexes.
 
-## Scenario 3 – API not running
+
+## Scenario 3 – Missing SQLite Database
 
 Break:
-Stop the FastAPI server.
+Delete data/metrics/search_logs.db
 
-Expected issue:
-Dashboard cannot fetch search results.
+Effect:
+Dashboard KPIs fail because query logs are missing.
 
 Fix:
-Restart the API:
-
-python -m uvicorn backend.app.api:app --reload
+Restart the API. The database is automatically recreated by the init_db() function.
