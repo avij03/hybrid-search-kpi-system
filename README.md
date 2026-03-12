@@ -244,3 +244,16 @@ This project demonstrates a complete hybrid search system including:
 7. evaluation metrics
 
 The system shows how combining lexical and semantic search improves retrieval performance.
+
+## Quick Start
+
+Run the entire system with:
+
+./up.sh
+
+This will:
+
+- generate the dataset
+- build indexes
+- start the FastAPI backend
+- launch the Streamlit dashboard
