@@ -29,3 +29,6 @@ python -m backend.app.ingest --input data/raw --out data/processed
 
 Result:
 Generated ingestion module that normalizes documents and saves them to data/processed/docs.jsonl.
+
+Edits made:
+Reviewed the generated code and kept the document parsing logic and JSONL output implementation.
