@@ -50,3 +50,54 @@ Generated BM25 indexing module and created lexical search index artifact.
 
 ------------------------------------------------------------------------------------------------------------------------
 
+## Prompt 4
+Task: Implement semantic vector indexing.
+
+Prompt used:
+Implement vector indexing in backend/app/search.py using TF-IDF embeddings and FAISS.
+
+Result:
+Created vector.index and vector_meta.pkl for semantic search.
+
+-----------------------------------------------------------------------------------------------------------------------
+
+## Prompt 5
+Task: Implement hybrid search API.
+
+Prompt used:
+Create a FastAPI service in backend/app/api.py with endpoints:
+GET /health
+POST /search
+
+The search endpoint should combine BM25 scores and vector similarity scores into a hybrid score using a weighted parameter alpha.
+
+Result:
+Implemented FastAPI backend exposing hybrid search functionality and verified results using Swagger UI.
+
+------------------------------------------------------------------------------------------------------------------------
+
+## Prompt 6
+Task: Implement dashboard UI.
+
+Prompt used:
+Create a Streamlit dashboard in frontend/dashboard.py that allows users to input search queries and visualize hybrid search results.
+
+The dashboard should:
+- Accept query input
+- Allow tuning of top_k and alpha parameters
+- Display results in a table
+- Visualize bm25_score, vector_score, and hybrid_score.
+
+Result:
+Implemented Streamlit dashboard for interactive hybrid search visualization.
+
+------------------------------------------------------------------------------------------------------------------------
+
+## Prompt 7
+Task: Implement evaluation metrics.
+
+Prompt used:
+Create evaluation module backend/app/evaluate.py implementing Recall@k and nDCG@k metrics for search performance evaluation.
+
+Result:
+Implemented evaluation script and created evaluation dataset data/eval/qrels.json.
