@@ -4,6 +4,9 @@ import json
 import faiss
 import numpy as np
 from rank_bm25 import BM25Okapi
+import time
+import uuid
+from datetime import datetime
 
 app = FastAPI()
 
@@ -31,6 +34,10 @@ def health():
 @app.post("/search")
 def search(query: str, top_k: int = 5, alpha: float = 0.5):
 
+    # Observability start
+    request_id = str(uuid.uuid4())
+    start_time = time.time()
+
     tokens = query.lower().split()
 
     bm25_scores = bm25.get_scores(tokens)
@@ -57,4 +64,22 @@ def search(query: str, top_k: int = 5, alpha: float = 0.5):
 
     results = sorted(results, key=lambda x: x["hybrid_score"], reverse=True)
 
-    return {"results": results}
+    # Observability end
+    latency_ms = int((time.time() - start_time) * 1000)
+
+    log_entry = {
+        "request_id": request_id,
+        "timestamp": datetime.now().isoformat(),
+        "query": query,
+        "top_k": top_k,
+        "alpha": alpha,
+        "latency_ms": latency_ms,
+        "result_count": len(results)
+    }
+
+    print(json.dumps(log_entry))
+
+    return {
+        "request_id": request_id,
+        "results": results
+    }
