@@ -1,0 +1,9 @@
+Artificial intelligence is transforming healthcare by enabling faster diagnostics and personalized treatments.
+
+Machine learning models are widely used in cybersecurity to detect anomalies and potential threats.
+
+Hybrid search combines lexical search techniques like BM25 with semantic search using embeddings.
+
+Vector databases allow efficient similarity search across large collections of documents.
+
+Cybersecurity analysts rely on automated systems to detect malware and network intrusions.

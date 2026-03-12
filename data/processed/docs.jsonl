@@ -1,0 +1,5 @@
+{"doc_id": 0, "title": "Document 0", "text": "Artificial intelligence is transforming healthcare by enabling faster diagnostics and personalized treatments.", "source": "sample_docs.txt", "created_at": "2026-03-12T10:37:05.157275"}
+{"doc_id": 1, "title": "Document 1", "text": "Machine learning models are widely used in cybersecurity to detect anomalies and potential threats.", "source": "sample_docs.txt", "created_at": "2026-03-12T10:37:05.157317"}
+{"doc_id": 2, "title": "Document 2", "text": "Hybrid search combines lexical search techniques like BM25 with semantic search using embeddings.", "source": "sample_docs.txt", "created_at": "2026-03-12T10:37:05.157328"}
+{"doc_id": 3, "title": "Document 3", "text": "Vector databases allow efficient similarity search across large collections of documents.", "source": "sample_docs.txt", "created_at": "2026-03-12T10:37:05.157335"}
+{"doc_id": 4, "title": "Document 4", "text": "Cybersecurity analysts rely on automated systems to detect malware and network intrusions.", "source": "sample_docs.txt", "created_at": "2026-03-12T10:37:05.157341"}
